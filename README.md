@@ -73,11 +73,16 @@ npm run build:parse-ai
 
 🌐 Load Extension in Chrome (Dev Mode)
 
-1.Open chrome://extensions/；
-2.Enable Developer Mode；
-3.Click Load unpacked；
-4.Select project root folder；
-5.Reload after changes (⌘R / F5)；
+1.Open chrome://extensions/
+
+2.Enable Developer Mode
+
+3.Click Load unpacked
+
+4.Select project root folder
+
+5.Reload after changes (⌘R / F5)
+
 
 ---
 

@@ -159,7 +159,7 @@ npm run build:parse-ai
 - 无法直接用于企业执行  
 
 📸 示例截图：  
-<img width="1009" height="651" alt="image" src="https://github.com/user-attachments/assets/ecd60333-a74c-46a9-b03c-16cb9c6049ef" />
+<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/ecd60333-a74c-46a9-b03c-16cb9c6049ef" />
 
 <img width="1004" height="654" alt="image" src="https://github.com/user-attachments/assets/8e204346-ddaf-4a79-8795-1c2211804c4e" />
 <img width="1003" height="638" alt="image" src="https://github.com/user-attachments/assets/8a3d7375-f2ba-483d-ad68-9d979973dfde" />

@@ -38,6 +38,8 @@
 
 ## 🧩 One-Click Setup (Mac / Windows)
 
+https://youtu.be/sd4nwjXWmQY
+
 No Node / Python required beforehand. Double-click to auto-detect and install missing dependencies (**Homebrew / Node / npm / Python**) and run `npm install`.
 
 | Platform | Script |

@@ -8,7 +8,7 @@
 
 - 🇬🇧 English (Current)
 - 🇨🇳 [中文](./README（中文）.md)
-- 🇰🇷 [한국어](./README_KR.md)
+- 🇰🇷 [한국어](./README（한국어）.md)
 
 ---
 # TalkWeb (Sour AI System) v3.5

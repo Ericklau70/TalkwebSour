@@ -209,8 +209,8 @@ npm run build:parse-ai
 - 输出标准 Mermaid 图  
 
 📸 示例截图：  
-<img width="905" height="759" alt="image" src="https://github.com/user-attachments/assets/8a889b0d-7bba-485a-90b2-0291b625eff0" />
-<img width="1466" height="833" alt="image" src="https://github.com/user-attachments/assets/90956c08-4cc7-41b5-aa54-68ea5bec73c6" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/8a889b0d-7bba-485a-90b2-0291b625eff0" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/90956c08-4cc7-41b5-aa54-68ea5bec73c6" />
 
 ---
 
@@ -228,8 +228,8 @@ npm run build:parse-ai
 - 兼顾“可用性 + 娱乐性”  
 
 📸 示例截图：  
-<img width="1031" height="767" alt="image" src="https://github.com/user-attachments/assets/815c21bc-4d96-439f-8ecc-df71f83ce1b3" />
-<img width="1030" height="773" alt="image" src="https://github.com/user-attachments/assets/9e77b6e7-b097-458b-95ac-4541189d43a8" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/815c21bc-4d96-439f-8ecc-df71f83ce1b3" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/9e77b6e7-b097-458b-95ac-4541189d43a8" />
 
 
 ---

@@ -159,10 +159,10 @@ npm run build:parse-ai
 - 无法直接用于企业执行  
 
 📸 示例截图：  
-<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/ecd60333-a74c-46a9-b03c-16cb9c6049ef" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/ecd60333-a74c-46a9-b03c-16cb9c6049ef" />
 
-<img width="1004" height="654" alt="image" src="https://github.com/user-attachments/assets/8e204346-ddaf-4a79-8795-1c2211804c4e" />
-<img width="1003" height="638" alt="image" src="https://github.com/user-attachments/assets/8a3d7375-f2ba-483d-ad68-9d979973dfde" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/8e204346-ddaf-4a79-8795-1c2211804c4e" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/8a3d7375-f2ba-483d-ad68-9d979973dfde" />
 
 ---
 
@@ -175,10 +175,10 @@ npm run build:parse-ai
 - 可直接用于企业内部执行  
 
 📸 示例截图：  
-<img width="1014" height="660" alt="image" src="https://github.com/user-attachments/assets/ef47b4b2-b13c-4176-b4f8-4645fb2b524d" />
-<img width="1044" height="799" alt="image" src="https://github.com/user-attachments/assets/5f012aee-8a59-4cae-90d8-f6dfdac49189" />
-<img width="1004" height="647" alt="image" src="https://github.com/user-attachments/assets/998a1932-2a00-45d5-bb66-2772add5202e" />
-<img width="1019" height="650" alt="image" src="https://github.com/user-attachments/assets/3afb4b2e-6254-4baf-b1af-bb10c2a48b80" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/ef47b4b2-b13c-4176-b4f8-4645fb2b524d" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/5f012aee-8a59-4cae-90d8-f6dfdac49189" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/998a1932-2a00-45d5-bb66-2772add5202e" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/3afb4b2e-6254-4baf-b1af-bb10c2a48b80" />
 
 
 
@@ -197,7 +197,7 @@ npm run build:parse-ai
 - 不符合实际流程  
 
 📸 示例截图：  
-<img width="994" height="730" alt="image" src="https://github.com/user-attachments/assets/6e998bd8-be72-4954-a3c4-c1ff5c73f93a" />
+<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/6e998bd8-be72-4954-a3c4-c1ff5c73f93a" />
 
 ---
 

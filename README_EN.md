@@ -1,185 +1,256 @@
-# TalkWeb (Sour AI System) v3.5
+# TalkwebSour Chrome Extension V3.5
 
-> 模糊输入 → 一键生成企业级 SOP / 流程图 / 结构化输出  
-> 一个让 AI 更好理解你的入口系统
-
----
-
-## 🌍 语言
-
-- 🇬🇧 [English](./README.md)
-- 🇨🇳 中文（当前）
-- 🇰🇷 [한국어](./README（한국어）.md)
+> 半透明科技感侧边栏 + 全局 AI 改写层（Command Palette）  
+> ⚡ Semi-transparent tech-style sidebar + global AI rewrite layer
 
 ---
 
-## ⚠️ License 说明
+## 🌍 Languages
 
-本项目为 **源码可见（source-available）+ 商业授权模式**。
-
-- 个人用户：可免费使用（仅限非商业用途）  
-- 公司 / 组织：任何使用均视为商业用途，必须获得授权  
-
-📧 商业授权联系：  
-fatwateliu@gmail.com  
+- 🇬🇧 [English]（current）
+- 🇨🇳 [中文](./README_CN.md)
 
 ---
 
-## ✨ 前言
+## 🚀 V3.5 Highlights
 
-AI 已经非常强大，甚至比大多数人想象的更强大。
-
-但真正的差别，不在模型本身，而在于你如何使用它。
-
-你是把 AI 当成一个工具？  
-还是当成一个可以“理解你”的人？
-
-就像人与人之间一样——  
-同一句话，对不同的人理解完全不同。
-
-AI 也是如此。
-
-只有当你给它：
-- 足够清晰的表达  
-- 足够完整的上下文  
-- 足够明确的规则  
-
-它才能真正输出你想要的结果。
-
-所以我做的 TalkWeb，并不只是一个软件。
-
-它是一个**让 AI 更好理解你的入口**。
-
-无论你使用的是：
-- ChatGPT  
-- Gemini  
-- 千问  
-- Claude  
-- 或其他模型  
-
-这里，都会成为你最顺手、最舒服的入口。
-
-你甚至可以让 AI：
-- 成为一个独立 Agent  
-- 拥有特定的人设与语气  
-- 扮演某个岗位角色（如 IT、运营等）  
-- 成为一个具有风格的“角色型 AI”  
-
-去试试看吧。  
-告诉它你真正想要的。  
-我们一起进步。
+- 🔖 Version and UI labels unified as **V3.5** (manifest `3.5.0`)
+- 🧩 One-click install scripts located in the **project root**:
+  - `SourMac.command` (Mac)
+  - `SourWins.bat` (Windows)
+- ⚡ In Quick Mode, **selecting a script counts as usage** (for “frequently used scripts” ranking), no longer dependent on clicking “Copy”
+- 🧠 In the standalone Mermaid editor, **AI Fix** sends both source code and Mermaid parsing/rendering errors to the model
+- 📚 Documentation simplified: this README is the **single source of truth**; legacy `.md` files removed
 
 ---
 
-## 🔬 研究基础
+## ✨ Feature Overview
 
-TalkWeb 并不是从零开始构建的系统。
+### ⚡ Global AI Command Palette
 
-它参考并融合了：
-
-- 大量 Prompt Engineering 研究（包括长结构提示词方法论）  
-- 来自 GitHub 等社区开发者与研究者的实践经验  
-
-但这些内容往往是：
-- 零散的  
-- 难以直接使用的  
-
-因此，我将它们重新整理、结构化，并转化为一个**任何人都可以直接使用的系统**。
-
-从「研究」 → 「结构」 → 「可用系统」
-
-目标只有一个：
-
-让 AI 的高级能力，变得**可用、可控、可复用**。
+- **Trigger**: “⚡” button next to sidebar search, or shortcut **⌘K (Mac) / Alt+Shift+A (Windows)**
+- **Modes**:
+  - 💤 No API Key: script search and insertion only
+  - 🧠 With API Key: AI actions such as polish, summarize, translate selected text
 
 ---
 
-## 🚀 项目简介
+### 🧱 Three-Layer Architecture
 
-TalkWeb 是一个基于 Agent 的 AI 操作系统，支持：
-
-- 自动选择 Agent  
-- 自动生成 Script（提示词）  
-- PromUp 提示词优化  
-- Skill 技能模块系统  
-- 多语言支持  
-- Mermaid 图表生成  
-- JSON 导入 / 导出  
+- 🎯 Trigger — shortcuts, selection tracking, focus memory  
+- 💬 Command — slash commands, prompts, multi-provider  
+- 🖼 Render — palette / preview / diff  
 
 ---
 
-## ✨ 核心能力
+### 🔌 Text Injection Compatibility
 
-### 🤖 Agent 系统
-- 自动匹配最合适的 Agent  
-- 支持自定义角色  
-
-### 🧠 Skill & Script
-- 技能模块化  
-- Prompt 模板复用  
-
-### ⚡ PromUp 引擎
-- 自动优化输入  
-- 提升输出质量  
-- 输出结构化结果  
-
-### 🌍 多语言支持
-- 中文 / 英文 / 韩文  
-
-### 🔑 无 API 模式
-- 支持本地使用  
-- 可接入不同 AI 模型  
-
-### 📊 Mermaid 图表
-- 自动生成流程图  
-- 支持编辑  
-
-### 🎭 人设系统
-- 可定义 AI 风格与语气  
-
-### 📦 Prompt 管理
-- JSON 一键下载  
-- 支持上传 / 本地导入导出  
+- `<textarea>` / `<input>` (including React/Vue controlled components)
+- `contenteditable`
+- ChatGPT / Claude / ProseMirror-based editors
 
 ---
 
-## 🆚 示例（核心卖点）
+### 🤖 Supported AI Services (configurable)
 
-### 用户输入（原始）
-
-现在需要梳理一下一般自购采购流程……
-
----
-
-### ❌ 普通 AI 输出
-
-- 只有简单步骤  
-- 没有角色  
-- 没有结构  
-- 无法直接执行  
+- OpenAI (GPT-4o / 4o-mini, etc.)
+- Google Gemini
+- Alibaba Qwen (OpenAI-compatible endpoint)
+- DeepSeek
+- Ollama (local)
 
 ---
 
-### ✅ TalkWeb 输出
+## 📁 Project Structure (Excerpt)
 
-- 标准 SOP 文档  
-- 自动识别岗位  
-- 明确职责分工  
-- 包含风险控制  
-- 可直接用于企业  
+
+```
+TalkWebSour_V3.5/
+├── manifest.json              # Extension config (version 3.5.0)
+├── SourMac.command            # Mac one-click setup (root)
+├── SourWins.bat               # Windows one-click setup (root)
+├── popup.html / popup.js
+├── src/
+│   ├── content.js             # Sidebar core logic
+│   ├── background.js        # Background service
+│   ├── ai_rewrite/          # AI rewrite layer
+│   ├── components/          # Mermaid editor, etc.
+│   └── utils/               # Bundled utilities
+├── icons/
+└── scripts/                   # Build & tooling scripts
+```
 
 ---
 
-## 📊 Mermaid 示例
+## 🧩 One-Click Setup (Mac / Windows)
 
-```mermaid
-flowchart TD
-A[需求申请] --> B[预算确认]
-B --> C{是否超预算}
-C -->|是| D[审批]
-C -->|否| E[供应商选择]
-E --> F[比价]
-F --> G[合同]
-G --> H[下单]
-H --> I[验收]
-I --> J[结算]
+No Node / Python required beforehand. Double-click to auto-detect and install missing dependencies (**Homebrew / Node / npm / Python**) and run `npm install`.
+
+| Platform | Script |
+|----------|--------|
+| 🍎 Mac | `./SourMac.command` |
+| 🪟 Windows | `SourWins.bat` |
+
+---
+
+### ⚠️ Permissions & Issues
+
+**Mac**
+- May be blocked initially: Right-click → Open / System Settings → Privacy → Allow
+- Fix permission:
+```bash
+chmod +x SourMac.command
+
+**Windows**
+
+- Run CMD as Administrator if winget fails
+- Restart after Node installation if node not found
+
+**Optional Build Commands：
+
+```bash
+npm run build:quick-chat-history
+npm run build:mermaid-editor
+npm run build:mermaid
+npm run build:parse-ai
+```
+
+---
+
+🌐 Load Extension in Chrome (Dev Mode)
+
+1.Open chrome://extensions/
+2.Enable Developer Mode
+3.Click Load unpacked
+4.Select project root folder
+5.Reload after changes (⌘R / F5)
+
+---
+
+🧭 Usage Guide (Simplified)
+
+📌 Sidebar
+1.Click toolbar icon → toggle sidebar
+2.Drag header → move window
+3.Drag edge → resize
+4.Alt + / → focus search
+
+🧠 AI Panel (with Key)
+
+1.Select text on page
+2.Press ⌘K or click “⚡”
+3.Choose action → preview → apply
+
+##⚡ Quick Mode & Script Ranking
+
+1.Clicking a script counts usage (for ranking)
+2.Even without API Key, search + UI features still work
+
+---
+
+##🆚 Examples (Core Value)
+
+👉 Comparison: Generic AI vs TalkWeb
+
+---
+🧾 Example 1: SOP Generation
+Input
+
+Now we need to design a procurement process...
+
+❌ Generic AI (e.g. Gemini)
+1.Simple step descriptions
+2.No role structure
+3.No formal format
+4.Not executable in enterprise context
+
+📸 Example screenshots:
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/ecd60333-a74c-46a9-b03c-16cb9c6049ef" />
+
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/8e204346-ddaf-4a79-8795-1c2211804c4e" /> <img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/8a3d7375-f2ba-483d-ad68-9d979973dfde" />
+
+
+✅ TalkWeb (Standard SOP Prompt)
+1.Auto-detect business domain (procurement / finance)
+2.Auto-generate roles (requester / buyer / approver)
+3.Full SOP structure output
+4.Includes process + risk control + audit trail
+5.Ready for enterprise execution
+
+📸 Example screenshots:
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/ef47b4b2-b13c-4176-b4f8-4645fb2b524d" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/5f012aee-8a59-4cae-90d8-f6dfdac49189" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/998a1932-2a00-45d5-bb66-2772add5202e" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/3afb4b2e-6254-4baf-b1af-bb10c2a48b80" />
+
+##🧭 Example 2: Mermaid Flowchart
+Input
+
+##Draw a procurement flowchart
+
+❌ Generic AI
+1.Incomplete or messy logic
+2.Missing roles
+3.Weak structure
+
+📸 Screenshot:
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/6e998bd8-be72-4954-a3c4-c1ff5c73f93a" />
+
+✅ TalkWeb
+1.🧩 Auto process detection
+2.👥 Role-based flow
+3.📊 Standard Mermaid output
+
+📸 Screenshots:
+<img width="905" height="759" alt="image" src="https://github.com/user-attachments/assets/8a889b0d-7bba-485a-90b2-0291b625eff0" />
+<img width="1466" height="833" alt="image" src="https://github.com/user-attachments/assets/90956c08-4cc7-41b5-aa54-68ea5bec73c6" />
+
+🤖 Example 3: AI Persona
+Request
+
+Use a funny Iron Man-style IT engineer to fix my computer
+
+✅ TalkWeb Persona System
+1.🎭 Custom persona support
+2.😂 Humor + technical balance
+3.🛠 Practical solution + entertainment
+
+📸 Screenshot:
+<img width="1031" height="767" alt="image" src="https://github.com/user-attachments/assets/815c21bc-4d96-439f-8ecc-df71f83ce1b3" />
+<img width="1030" height="773" alt="image" src="https://github.com/user-attachments/assets/9e77b6e7-b097-458b-95ac-4541189d43a8" />
+
+
+
+🔥 Key Differences
+
+| Capability        | Generic AI | TalkWeb |
+| ----------------- | ---------- | ------- |
+| SOP Structuring   | ❌          | ✅       |
+| Role Detection    | ❌          | ✅       |
+| Executable Output | ❌          | ✅       |
+| Flowchart Quality | ⚠️         | ✅       |
+| Persona Stability | ❌          | ✅       |
+| Prompt Management | ❌          | ✅       |
+
+---
+
+👉 Core difference:
+
+Generic AI = answers questions
+TalkWeb = builds systems
+
+---
+
+##🧾 CHANGELOG (V3.5)
+🔖 Version updated to 3.5.0
+⚡ Quick Mode usage tracking improved
+🧠 Mermaid AI Fix enhanced (error-aware)
+🧩 One-click setup scripts standardized
+📚 README unified as single documentation
+
+---
+
+👤 License / Author
+
+Author: ErickLiu (see manifest.json)
+Use subject to local laws and AI service terms.

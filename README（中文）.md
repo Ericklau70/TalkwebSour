@@ -9,7 +9,7 @@
 
 - 🇬🇧 [English](./README.md)
 - 🇨🇳 中文（当前）
-- 🇰🇷 [한국어](./README_KR.md)
+- 🇰🇷 [한국어](./README（한국어）.md)
 
 ---
 

@@ -1,21 +1,103 @@
-MIT License
+# TalkWeb License (TWL) v1.0
 
-Copyright (c) 2026 ErickLau
+Copyright (c) 2026 ErickLau. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## 1. Definitions
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+"Software" refers to all TalkWeb products and versions, including but not limited to v3.6, v3.7, and any future releases.
+
+"Individual" means a natural person using the Software for personal, non-commercial purposes.
+
+"Organization" means any company, business entity, institution, or group of individuals acting for commercial or organizational purposes.
+
+---
+
+## 2. Personal Use (Free)
+
+Individuals are granted a free, non-exclusive, non-transferable license to:
+
+- Use the Software  
+- Modify the Software  
+- Deploy the Software locally  
+
+Strictly for non-commercial purposes only.
+
+---
+
+## 3. Commercial Use (License Required)
+
+Any use of the Software by an Organization is considered **commercial use**.
+
+A commercial license is required if the Software is used:
+
+- Within a company or organization  
+- As part of a product or service  
+- By employees, contractors, or clients  
+- For any activity that directly or indirectly generates revenue  
+
+---
+
+## 4. Restrictions
+
+You may NOT, without explicit written permission:
+
+- Resell the Software  
+- Provide the Software as a hosted or SaaS service  
+- Repackage or redistribute the Software as a commercial product  
+- Circumvent or bypass licensing requirements  
+
+---
+
+## 5. Distribution
+
+You MAY:
+
+- Share the original repository  
+- Modify the Software for personal use  
+
+You MAY NOT:
+
+- Distribute modified versions of the Software for commercial purposes  
+- Use the Software in any way that violates this License  
+
+---
+
+## 6. Commercial Licensing
+
+To obtain a commercial license, please contact:
+
+📧 fatwateliu@gmail.com
+
+---
+
+## 7. Disclaimer of Warranty
+
+The Software is provided "as is", without warranty of any kind, express or implied, including but not limited to:
+
+- Merchantability  
+- Fitness for a particular purpose  
+- Non-infringement  
+
+In no event shall the author or copyright holder be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise.
+
+---
+
+## 8. Version Coverage
+
+This License applies to all versions of the Software, including:
+
+- v3.6  
+- v3.7  
+- Any future versions  
+
+---
+
+## 9. Branding
+
+"TalkWeb" is a protected name.
+
+You may not use the name "TalkWeb" for commercial purposes, branding, or marketing without explicit written permission.
+
+---

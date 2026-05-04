@@ -2,6 +2,14 @@
 
 > 半透明科技感侧边栏 + 全局 AI 改写层（Command Palette）  
 > Semi-transparent sidebar + global AI rewrite layer
+>
+## 🌍 语言
+
+- 🇬🇧 [English](./README_EN.md)
+- 🇨🇳 中文（当前）
+- 🇰🇷 [한국어](./README_KR.md)
+
+---
 
 ## V3.5 要点
 

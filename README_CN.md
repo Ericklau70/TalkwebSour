@@ -54,6 +54,8 @@ Humans and AI can actually be closer.
 
 ## 一键环境安装（Mac / Windows）
 
+https://youtu.be/sd4nwjXWmQY
+
 无需事先安装 Node / Python：双击根目录脚本，将自动检测并安装缺失的 **Homebrew（仅 Mac）/ Node / npm / Python**，并在项目根目录执行 **`npm install`**。
 
 | 平台 | 脚本 |

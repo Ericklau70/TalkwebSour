@@ -1,6 +1,4 @@
 # TalkwebSour Chrome Extension V3.5
-
-> 半透明科技感侧边栏 + 全局 AI 改写层（Command Palette）  
 > ⚡ Semi-transparent tech-style sidebar + global AI rewrite layer
 
 ---

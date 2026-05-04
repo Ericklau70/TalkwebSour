@@ -128,7 +128,6 @@ npm run build:parse-ai
 
 ---
 
-# 🆚 示例（核心卖点展示）
 ## 🆚 示例（核心卖点展示）
 
 以下示例展示：  
@@ -152,7 +151,10 @@ npm run build:parse-ai
 - 无法直接用于企业执行  
 
 📸 示例截图：  
-（在此插入 Gemini 输出截图）
+<img width="1009" height="651" alt="image" src="https://github.com/user-attachments/assets/ecd60333-a74c-46a9-b03c-16cb9c6049ef" />
+
+<img width="1004" height="654" alt="image" src="https://github.com/user-attachments/assets/8e204346-ddaf-4a79-8795-1c2211804c4e" />
+<img width="1003" height="638" alt="image" src="https://github.com/user-attachments/assets/8a3d7375-f2ba-483d-ad68-9d979973dfde" />
 
 ---
 
@@ -165,9 +167,11 @@ npm run build:parse-ai
 - 可直接用于企业内部执行  
 
 📸 示例截图：  
-（在此插入 TalkWeb SOP 输出截图）
+<img width="1014" height="660" alt="image" src="https://github.com/user-attachments/assets/ef47b4b2-b13c-4176-b4f8-4645fb2b524d" />
+<img width="1044" height="799" alt="image" src="https://github.com/user-attachments/assets/5f012aee-8a59-4cae-90d8-f6dfdac49189" />
+<img width="1004" height="647" alt="image" src="https://github.com/user-attachments/assets/998a1932-2a00-45d5-bb66-2772add5202e" />
+<img width="1019" height="650" alt="image" src="https://github.com/user-attachments/assets/3afb4b2e-6254-4baf-b1af-bb10c2a48b80" />
 
-<img width="861" height="411" alt="Screenshot 2026-05-04 at 3 33 00 PM" src="https://github.com/user-attachments/assets/d6cd760d-b489-4c81-9e26-5fb3fb3b4da8" />
 
 
 ## 示例二：Mermaid 流程图生成
@@ -185,7 +189,7 @@ npm run build:parse-ai
 - 不符合实际流程  
 
 📸 示例截图：  
-（在此插入普通 Mermaid 输出）
+<img width="994" height="730" alt="image" src="https://github.com/user-attachments/assets/6e998bd8-be72-4954-a3c4-c1ff5c73f93a" />
 
 ---
 
@@ -197,7 +201,8 @@ npm run build:parse-ai
 - 输出标准 Mermaid 图  
 
 📸 示例截图：  
-（在此插入 TalkWeb Mermaid 输出）
+<img width="905" height="759" alt="image" src="https://github.com/user-attachments/assets/8a889b0d-7bba-485a-90b2-0291b625eff0" />
+<img width="1466" height="833" alt="image" src="https://github.com/user-attachments/assets/90956c08-4cc7-41b5-aa54-68ea5bec73c6" />
 
 ---
 
@@ -207,19 +212,6 @@ npm run build:parse-ai
 
 用一个“搞笑的 Iron Man 风格 IT 工程师”帮我解决电脑问题
 
----
-
-### ❌ 普通 AI
-
-- 风格不稳定  
-- 容易跑偏  
-- 没有持续角色设定  
-
-📸 示例截图：  
-（在此插入普通输出）
-
----
-
 ### ✅ TalkWeb 人设系统
 
 - 可定义固定角色（Iron Man 风格 IT）  
@@ -228,7 +220,9 @@ npm run build:parse-ai
 - 兼顾“可用性 + 娱乐性”  
 
 📸 示例截图：  
-（在此插入 TalkWeb 人设输出）
+<img width="1031" height="767" alt="image" src="https://github.com/user-attachments/assets/815c21bc-4d96-439f-8ecc-df71f83ce1b3" />
+<img width="1030" height="773" alt="image" src="https://github.com/user-attachments/assets/9e77b6e7-b097-458b-95ac-4541189d43a8" />
+
 
 ---
 

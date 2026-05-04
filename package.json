@@ -1,0 +1,38 @@
+{
+  "name": "talkwebsour",
+  "version": "3.5.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:quick-chat-history": "esbuild src/utils/quickChatHistory.entry.ts --bundle --minify --format=iife --outfile=src/utils/quickChatHistory.bundle.js --platform=browser",
+    "build:mermaid": "esbuild src/utils/mermaid-bundle.entry.ts --bundle --minify --format=iife --global-name=TalkWebMermaid --outfile=src/utils/mermaid.renderer.bundle.js --platform=browser",
+    "build:parse-ai": "esbuild src/utils/parseAIResponse.ts --bundle --minify --format=iife --global-name=TwParseAIResponse --outfile=src/utils/parseAIResponse.bundle.js --platform=neutral",
+    "copy:reactflow-css": "cp node_modules/reactflow/dist/style.css src/utils/reactflow.bundle.css",
+    "build:mermaid-editor": "npm run copy:reactflow-css && esbuild src/mermaidEditor.entry.tsx --bundle --minify --jsx=automatic --format=iife --outfile=src/utils/mermaidEditor.bundle.js --platform=browser --define:process.env.NODE_ENV=\\\"production\\\"",
+    "verify:mermaid": "tsx scripts/verify-mermaid.ts",
+    "verify:parse-ai": "tsx scripts/verify-parse-ai.ts",
+    "verify:flow-roundtrip": "tsx scripts/verify-flow-roundtrip.ts",
+    "build:agency": "tsx scripts/build-agency-index.ts",
+    "generate:agency-l10n": "tsx scripts/generate-agency-ui-l10n.ts"
+  },
+  "dependencies": {
+    "dexie": "^4.0.11",
+    "dompurify": "^3.2.6",
+    "html-to-image": "^1.11.13",
+    "mermaid": "^11.6.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "reactflow": "^11.11.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "esbuild": "^0.25.2",
+    "fast-glob": "^3.3.3",
+    "gray-matter": "^4.0.3",
+    "happy-dom": "^20.9.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}

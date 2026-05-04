@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TalkwebSour · Mermaid</title>
+  <link rel="stylesheet" href="src/utils/reactflow.bundle.css" />
+  <style>
+    html, body { margin: 0; height: 100%; background: #0b1020; }
+    #tw-mv-host { min-height: 100%; box-sizing: border-box; }
+    /* 独立标签页未加载 render.js，此处与快速模式一致：全尺寸 SVG + 滚动，避免压窄发糊 */
+    .tw-mb-export-area { overflow: auto !important; }
+    .tw-mb-light-canvas svg {
+      max-width: none !important;
+      width: auto !important;
+      height: auto;
+      text-rendering: geometricPrecision;
+      shape-rendering: geometricPrecision;
+    }
+  </style>
+</head>
+<body>
+  <div id="tw-mv-host"></div>
+  <script src="src/utils/mermaid.renderer.bundle.js"></script>
+  <script src="src/utils/mermaidEditor.bundle.js"></script>
+  <script src="src/mermaid-viewer-page.js"></script>
+</body>
+</html>

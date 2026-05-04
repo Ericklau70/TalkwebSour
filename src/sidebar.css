@@ -1,0 +1,900 @@
+/* ========================================
+  TalkwebSour - Sidebar Styles (Apple-inspired neutral + single blue accent)
+   ======================================== */
+
+:root {
+  --tw-bg-primary: rgba(0, 0, 0, 0.82);
+  --tw-bg-secondary: rgba(39, 39, 41, 0.92);
+  --tw-bg-card: rgba(39, 39, 41, 0.88);
+  --tw-bg-card-hover: rgba(42, 42, 45, 0.95);
+  --tw-accent: #0071e3;
+  --tw-accent-2: #2997ff;
+  --tw-accent-glow: rgba(0, 113, 227, 0.28);
+  --tw-accent-glow-2: rgba(41, 151, 255, 0.2);
+  --tw-text-primary: #ffffff;
+  --tw-text-secondary: rgba(255, 255, 255, 0.72);
+  --tw-text-muted: rgba(255, 255, 255, 0.48);
+  --tw-border: rgba(255, 255, 255, 0.12);
+  --tw-border-active: rgba(0, 113, 227, 0.45);
+  --tw-danger: #ff3b30;
+  --tw-success: #34c759;
+  --tw-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --tw-sidebar-width: 320px;
+  --tw-min-width: 240px;
+  --tw-max-width: 600px;
+}
+
+/* === SIDEBAR CONTAINER === */
+#talkweb-sour-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--tw-sidebar-width);
+  height: 100vh;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--tw-font);
+  font-size: 13px;
+  color: var(--tw-text-primary);
+  background: var(--tw-bg-primary);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-right: 1px solid var(--tw-border);
+  box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.2s ease,
+              opacity 0.3s ease;
+  overflow: hidden;
+  user-select: none;
+}
+
+#talkweb-sour-sidebar.tw-collapsed {
+  transform: translateX(calc(-1 * var(--tw-sidebar-width) + 32px));
+}
+
+#talkweb-sour-sidebar.tw-hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* === RESIZE HANDLE === */
+#talkweb-resize-handle {
+  position: absolute;
+  right: -4px;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  cursor: ew-resize;
+  z-index: 10;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+#talkweb-resize-handle:hover,
+#talkweb-resize-handle.tw-dragging {
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3));
+}
+
+/* === TOGGLE TAB === */
+#talkweb-toggle-tab {
+  position: absolute;
+  right: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 72px;
+  background: var(--tw-bg-primary);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--tw-border);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tw-accent);
+  font-size: 12px;
+  writing-mode: vertical-rl;
+  letter-spacing: 2px;
+  transition: all 0.2s ease;
+  box-shadow: 3px 0 12px rgba(0,0,0,0.4);
+}
+
+#talkweb-toggle-tab:hover {
+  background: var(--tw-bg-card-hover);
+  color: var(--tw-text-primary);
+  box-shadow: 3px 0 20px var(--tw-accent-glow);
+}
+
+#talkweb-toggle-tab .tw-toggle-icon {
+  writing-mode: horizontal-tb;
+  font-size: 14px;
+}
+
+/* === HEADER === */
+#talkweb-header {
+  position: relative;
+  z-index: 1;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--tw-border);
+  background: linear-gradient(180deg,
+    rgba(0, 212, 255, 0.06) 0%,
+    transparent 100%
+  );
+  flex-shrink: 0;
+}
+
+.tw-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tw-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tw-logo-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--tw-accent), var(--tw-accent-2));
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 12px var(--tw-accent-glow);
+}
+
+.tw-logo-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--tw-text-primary);
+  letter-spacing: 1px;
+}
+
+.tw-logo-text span {
+  color: var(--tw-accent);
+}
+
+.tw-header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.tw-icon-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--tw-border);
+  border-radius: 6px;
+  background: var(--tw-bg-card);
+  color: var(--tw-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.tw-icon-btn:hover {
+  border-color: var(--tw-accent);
+  color: var(--tw-accent);
+  background: var(--tw-accent-glow);
+  box-shadow: 0 0 8px var(--tw-accent-glow);
+}
+
+/* === SEARCH BOX === */
+.tw-search-wrapper {
+  position: relative;
+}
+
+.tw-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--tw-text-muted);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+#talkweb-search {
+  width: 100%;
+  padding: 8px 32px 8px 30px;
+  background: var(--tw-bg-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 8px;
+  color: var(--tw-text-primary);
+  font-family: var(--tw-font);
+  font-size: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+#talkweb-search::placeholder {
+  color: var(--tw-text-muted);
+}
+
+#talkweb-search:focus {
+  border-color: var(--tw-accent);
+  box-shadow: 0 0 12px var(--tw-accent-glow);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.tw-search-clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--tw-text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  display: none;
+  padding: 2px;
+}
+
+.tw-search-clear:hover {
+  color: var(--tw-danger);
+}
+
+/* === CATEGORIES === */
+#talkweb-categories {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--tw-border);
+  overflow-x: auto;
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+
+#talkweb-categories::-webkit-scrollbar {
+  display: none;
+}
+
+.tw-category-btn {
+  padding: 4px 12px;
+  border: 1px solid var(--tw-border);
+  border-radius: 20px;
+  background: var(--tw-bg-card);
+  color: var(--tw-text-secondary);
+  font-family: var(--tw-font);
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.tw-category-btn:hover {
+  border-color: var(--tw-accent);
+  color: var(--tw-accent);
+}
+
+.tw-category-btn.tw-active {
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(123,79,255,0.2));
+  border-color: var(--tw-accent);
+  color: var(--tw-accent);
+  box-shadow: 0 0 8px var(--tw-accent-glow);
+}
+
+/* === SNIPPET LIST === */
+#talkweb-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--tw-border) transparent;
+}
+
+#talkweb-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+#talkweb-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#talkweb-content::-webkit-scrollbar-thumb {
+  background: var(--tw-border);
+  border-radius: 2px;
+}
+
+.tw-category-group {
+  margin-bottom: 14px;
+}
+
+.tw-group-label {
+  font-size: 10px;
+  color: var(--tw-text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 4px 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tw-group-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--tw-border);
+}
+
+/* === SNIPPET CARD === */
+.tw-snippet-card {
+  position: relative;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  background: var(--tw-bg-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.tw-snippet-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--tw-accent), var(--tw-accent-2));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tw-snippet-card:hover {
+  background: var(--tw-bg-card-hover);
+  border-color: var(--tw-accent);
+  box-shadow: 0 0 16px var(--tw-accent-glow),
+              inset 0 0 20px rgba(0, 212, 255, 0.03);
+  transform: translateX(2px);
+}
+
+.tw-snippet-card:hover::before {
+  opacity: 1;
+}
+
+.tw-snippet-card.tw-copied {
+  border-color: var(--tw-success);
+  box-shadow: 0 0 16px rgba(0, 255, 170, 0.3);
+}
+
+.tw-snippet-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tw-text-primary);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.3px;
+}
+
+.tw-snippet-preview {
+  font-size: 11px;
+  color: var(--tw-text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tw-snippet-actions {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  gap: 4px;
+}
+
+.tw-snippet-card:hover .tw-snippet-actions {
+  display: flex;
+}
+
+.tw-snippet-action-btn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--tw-border);
+  border-radius: 4px;
+  background: var(--tw-bg-secondary);
+  color: var(--tw-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.15s;
+  padding: 0;
+}
+
+.tw-snippet-action-btn:hover {
+  border-color: var(--tw-accent);
+  color: var(--tw-accent);
+}
+
+.tw-snippet-action-btn.tw-delete:hover {
+  border-color: var(--tw-danger);
+  color: var(--tw-danger);
+}
+
+/* === COPY TOAST === */
+.tw-copy-toast {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-40px);
+  background: linear-gradient(135deg, var(--tw-accent), var(--tw-accent-2));
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.tw-copy-toast.tw-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* === FOOTER === */
+#talkweb-footer {
+  position: relative;
+  z-index: 1;
+  padding: 10px 12px;
+  border-top: 1px solid var(--tw-border);
+  background: linear-gradient(0deg,
+    rgba(0, 212, 255, 0.04) 0%,
+    transparent 100%
+  );
+  flex-shrink: 0;
+}
+
+.tw-add-btn {
+  width: 100%;
+  padding: 9px 16px;
+  background: linear-gradient(135deg,
+    rgba(0, 212, 255, 0.15),
+    rgba(123, 79, 255, 0.15)
+  );
+  border: 1px solid var(--tw-border-active);
+  border-radius: 8px;
+  color: var(--tw-accent);
+  font-family: var(--tw-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.tw-add-btn:hover {
+  background: linear-gradient(135deg,
+    rgba(0, 212, 255, 0.25),
+    rgba(123, 79, 255, 0.25)
+  );
+  box-shadow: 0 0 20px var(--tw-accent-glow);
+  transform: translateY(-1px);
+}
+
+/* === MODAL === */
+.tw-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 2147483646;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.tw-modal-overlay.tw-open {
+  display: flex;
+}
+
+.tw-modal {
+  width: 420px;
+  max-width: 90vw;
+  background: var(--tw-bg-primary);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--tw-border-active);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow:
+    0 0 60px rgba(0, 212, 255, 0.15),
+    0 40px 80px rgba(0, 0, 0, 0.6);
+  animation: tw-modal-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes tw-modal-in {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.tw-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tw-accent);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.tw-form-group {
+  margin-bottom: 14px;
+}
+
+.tw-form-label {
+  display: block;
+  font-size: 11px;
+  color: var(--tw-text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.tw-form-input,
+.tw-form-textarea,
+.tw-form-select {
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--tw-bg-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 8px;
+  color: var(--tw-text-primary);
+  font-family: var(--tw-font);
+  font-size: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.tw-form-textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.tw-form-input:focus,
+.tw-form-textarea:focus,
+.tw-form-select:focus {
+  border-color: var(--tw-accent);
+  box-shadow: 0 0 12px var(--tw-accent-glow);
+}
+
+.tw-form-select option {
+  background: #0a1020;
+  color: var(--tw-text-primary);
+}
+
+.tw-modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tw-btn-primary {
+  flex: 1;
+  padding: 10px;
+  background: linear-gradient(135deg, var(--tw-accent), var(--tw-accent-2));
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-family: var(--tw-font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tw-btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 20px var(--tw-accent-glow);
+  transform: translateY(-1px);
+}
+
+.tw-btn-secondary {
+  padding: 10px 20px;
+  background: var(--tw-bg-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 8px;
+  color: var(--tw-text-secondary);
+  font-family: var(--tw-font);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tw-btn-secondary:hover {
+  border-color: var(--tw-accent);
+  color: var(--tw-accent);
+}
+
+/* === EMPTY STATE === */
+.tw-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--tw-text-muted);
+}
+
+.tw-empty-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.tw-empty-text {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* === HIGHLIGHT === */
+.tw-highlight {
+  background: rgba(0, 212, 255, 0.25);
+  color: var(--tw-accent);
+  border-radius: 2px;
+}
+
+/* === OPACITY SLIDER === */
+.tw-opacity-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 2px 8px;
+}
+
+.tw-opacity-label {
+  font-size: 10px;
+  color: var(--tw-text-muted);
+  letter-spacing: 1px;
+  min-width: 60px;
+}
+
+.tw-opacity-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 3px;
+  background: var(--tw-border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.tw-opacity-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--tw-accent);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--tw-accent-glow);
+}
+
+/* ========================================
+   VARIABLE SYSTEM STYLES
+   ======================================== */
+
+/* === VAR CHIPS (inline in card preview) === */
+.tw-var-chip {
+  display: inline-block;
+  padding: 1px 8px 2px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0 2px;
+  letter-spacing: 0.3px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.tw-var-chip:hover {
+  opacity: 0.8;
+  transform: scale(1.06);
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+/* === VAR BADGE on card title === */
+.tw-var-badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--tw-accent);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* === VAR MODAL === */
+.tw-var-modal {
+  max-width: 460px !important;
+}
+
+.tw-var-field {
+  margin-bottom: 14px;
+}
+
+.tw-var-field-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--tw-text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tw-var-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tw-var-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.tw-var-opt {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: var(--tw-font);
+  cursor: pointer;
+  border: 1.5px solid var(--tw-border);
+  background: var(--tw-bg-card);
+  color: var(--tw-text-secondary);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.tw-var-opt:hover {
+  border-color: var(--tw-accent);
+  color: var(--tw-text-primary);
+}
+
+.tw-var-custom {
+  width: 100%;
+  padding: 7px 12px;
+  background: var(--tw-bg-card);
+  border: 1px solid var(--tw-border);
+  border-radius: 8px;
+  color: var(--tw-text-primary);
+  font-family: var(--tw-font);
+  font-size: 12px;
+  outline: none;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.tw-var-custom:focus {
+  border-color: var(--tw-accent);
+  box-shadow: 0 0 8px var(--tw-accent-glow);
+}
+
+.tw-var-custom::placeholder {
+  color: var(--tw-text-muted);
+}
+
+.tw-var-preview-label {
+  font-size: 10px;
+  color: var(--tw-text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 14px 0 6px;
+}
+
+.tw-var-preview {
+  background: var(--tw-bg-secondary);
+  border: 1px solid var(--tw-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--tw-text-primary);
+  word-break: break-word;
+  min-height: 42px;
+}
+
+/* === VAR HINT in snippet edit modal === */
+.tw-var-hint {
+  margin-top: 8px;
+  font-size: 10px;
+  color: var(--tw-text-muted);
+  line-height: 1.6;
+  padding: 8px 10px;
+  background: rgba(0, 212, 255, 0.04);
+  border: 1px solid var(--tw-border);
+  border-radius: 6px;
+}
+
+.tw-var-hint code {
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--tw-accent);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: var(--tw-font);
+  font-size: 10px;
+}
+
+/* === Preview rich (card preview with chips) === */
+.tw-preview-rich {
+  font-size: 11px;
+  color: var(--tw-text-secondary);
+  line-height: 1.8;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Has-vars card subtle indicator */
+.tw-has-vars {
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+.tw-has-vars:hover {
+  border-color: var(--tw-accent);
+}
+
+/* === LANGUAGE BUTTON === */
+.tw-lang-btn {
+  font-size: 10px !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  min-width: 28px;
+}
+
+/* === OPACITY VALUE DISPLAY === */
+.tw-opacity-val {
+  font-size: 10px;
+  color: var(--tw-accent);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* === OPACITY ROW FIX === */
+.tw-opacity-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 2px 10px;
+}

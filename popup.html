@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TalkwebSour</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 248px;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: -0.12px;
+  }
+  .popup-header {
+    padding: 14px 16px 12px;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .popup-icon {
+    width: 32px; height: 32px;
+    background: #0071e3;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .popup-title { font-size: 14px; font-weight: 600; color: #fff; letter-spacing: -0.22px; }
+  .popup-title span { color: #2997ff; }
+  .popup-sub { font-size: 10px; color: rgba(255, 255, 255, 0.55); letter-spacing: -0.08px; }
+  .popup-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* Toggle switch row */
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: #fafafc;
+    border: 3px solid rgba(0, 0, 0, 0.04);
+    border-radius: 11px;
+  }
+  .toggle-label {
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.48);
+    letter-spacing: -0.1px;
+  }
+  .toggle-label.active { color: #0071e3; }
+  .sw {
+    position: relative; width: 36px; height: 20px; cursor: pointer;
+  }
+  .sw input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .sw-track {
+    position: absolute; inset: 0;
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    transition: all 0.25s;
+  }
+  .sw-track::after {
+    content: '';
+    position: absolute;
+    left: 2px; top: 50%; transform: translateY(-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    transition: all 0.25s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .sw input:checked + .sw-track {
+    background: #0071e3;
+    border-color: #0071e3;
+  }
+  .sw input:checked + .sw-track::after {
+    left: calc(100% - 16px);
+    background: #fff;
+  }
+
+  .popup-btn {
+    width: 100%; padding: 8px 15px;
+    background: #0071e3;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.12px;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .popup-btn:hover {
+    background: #0077ed;
+  }
+  .popup-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .popup-hint {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.48);
+    text-align: center;
+    letter-spacing: -0.08px;
+  }
+  .ai-hint-title {
+    font-size: 10px;
+    color: #1d1d1f;
+    letter-spacing: -0.1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .ai-hint-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .ai-hint-label {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.55);
+  }
+  .ai-hint-footer {
+    font-size: 9px;
+    color: rgba(0, 0, 0, 0.48);
+    margin-top: 8px;
+    line-height: 1.47;
+    letter-spacing: -0.06px;
+  }
+  kbd {
+    background: #fafafc;
+    border: 3px solid rgba(0, 0, 0, 0.04);
+    border-radius: 6px;
+    padding: 1px 5px;
+    font-family: inherit;
+    font-size: 10px;
+    color: #1d1d1f;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin-right: 4px;
+    transition: background 0.2s;
+  }
+  .status-dot.on { background: #0071e3; }
+</style>
+</head>
+<body>
+<div class="popup-header">
+  <div class="popup-icon">⚡</div>
+  <div>
+    <div class="popup-title">TalkwebSour</div>
+    <div class="popup-sub">V3.1 · PROMPT MANAGER</div>
+  </div>
+</div>
+<div class="popup-body">
+  <p class="popup-hint" style="margin-bottom:4px">主界面在浏览器右侧「侧边栏面板」；点击工具栏本扩展图标即可打开。</p>
+  <!-- Enable/Disable toggle -->
+  <div class="toggle-row">
+    <span class="toggle-label" id="status-label">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="status-text">已禁用</span>
+    </span>
+    <label class="sw">
+      <input type="checkbox" id="enable-toggle">
+      <span class="sw-track"></span>
+    </label>
+  </div>
+
+  <!-- Toggle sidebar button -->
+  <button class="popup-btn" id="toggle-btn">⬡ 打开侧边栏</button>
+
+  <!-- AI 快捷键提示 -->
+  <div style="padding:8px 10px;background:#fafafc;border:3px solid rgba(0,0,0,0.04);border-radius:11px;">
+    <div class="ai-hint-title">⚡ 按需唤出（后台待命，不占网页）</div>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <div class="ai-hint-row">
+        <span class="ai-hint-label">页内面板</span>
+        <span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>/</kbd> / <kbd>Ctrl</kbd><kbd>⇧</kbd><kbd>/</kbd></span>
+      </div>
+      <div class="ai-hint-row">
+        <span class="ai-hint-label">扩展快捷键·面板</span>
+        <span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>Y</kbd> 等</span>
+      </div>
+      <div class="ai-hint-row">
+        <span class="ai-hint-label">扩展·侧栏切换</span>
+        <span><kbd>⌥</kbd><kbd>⇧</kbd><kbd>W</kbd></span>
+      </div>
+      <div class="ai-hint-row">
+        <span class="ai-hint-label">扩展·润色/译</span>
+        <span><kbd>⌥</kbd><kbd>⇧</kbd><kbd>R</kbd> <kbd>⌥</kbd><kbd>⇧</kbd><kbd>T</kbd></span>
+      </div>
+      <div class="ai-hint-row">
+        <span class="ai-hint-label">页内·精简</span>
+        <span><kbd>⌥</kbd><kbd>⇧</kbd><kbd>S</kbd>（本页已注入后）</span>
+      </div>
+    </div>
+    <div class="ai-hint-footer">💡 <strong>不会</strong>在打开网页时自动挂载脚本。你在当前标签按快捷键 / 点上面「切换侧边栏」时，扩展才会向<strong>这一页</strong>注入并显示。<br>Chrome 扩展快捷键最多 4 个；更多在 <code style="font-size:8px">chrome://extensions/shortcuts</code> · 侧栏 ✕ 仅隐藏</div>
+  </div>
+
+  <div class="popup-hint">
+    侧边栏 · <kbd>Alt</kbd>+<kbd>/</kbd> 搜索
+  </div>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>

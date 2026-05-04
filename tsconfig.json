@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"],
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src/utils/**/*.ts",
+    "src/components/**/*.tsx",
+    "src/mermaidEditor.entry.tsx",
+    "scripts/**/*.ts"
+  ]
+}

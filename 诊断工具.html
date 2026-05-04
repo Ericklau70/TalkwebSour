@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🔧 AI面板诊断工具</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 {
+    color: #00d4ff;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    color: #888;
+    margin-bottom: 30px;
+  }
+  .section {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .section h2 {
+    color: #7b4fff;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  .btn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #00d4ff, #7b4fff);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,212,255,0.4);
+  }
+  .btn-danger {
+    background: linear-gradient(135deg, #ff4466, #ff6688);
+  }
+  .input-test {
+    width: 100%;
+    padding: 12px;
+    background: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    margin: 10px 0;
+    min-height: 100px;
+    resize: vertical;
+  }
+  .log {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 15px;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 15px;
+  }
+  .log-line {
+    margin: 3px 0;
+    padding: 3px 0;
+    border-bottom: 1px solid #222;
+  }
+  .log-ok { color: #0f0; }
+  .log-error { color: #f44; }
+  .log-warn { color: #fa0; }
+  .log-info { color: #0af; }
+  .log-time {
+    color: #666;
+    margin-right: 8px;
+  }
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .status-item {
+    background: #1a1a1a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 12px;
+  }
+  .status-item.ok { border-color: #0f0; }
+  .status-item.error { border-color: #f44; }
+  .status-label {
+    color: #888;
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  .status-value {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  kbd {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: 12px;
+    color: #0af;
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+  .badge-ok { background: #0f0; color: #000; }
+  .badge-error { background: #f44; color: #fff; }
+  .badge-warn { background: #fa0; color: #000; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔧 TalkwebSour AI面板诊断工具</h1>
+  <p class="subtitle">专业级故障排查 - 找出面板不出现的真正原因</p>
+
+  <div class="section">
+    <h2>第1步：环境检查</h2>
+    <p style="margin-bottom:15px;">点击下方按钮，系统会自动检查所有必要的模块和元素。</p>
+    <button class="btn" onclick="runFullDiagnostic()">🔍 运行完整诊断</button>
+    <button class="btn btn-danger" onclick="clearLog()">清空日志</button>
+    <div id="status-grid" class="status-grid"></div>
+    <div id="log" class="log"></div>
+  </div>
+
+  <div class="section">
+    <h2>第2步：手动触发面板</h2>
+    <p style="margin-bottom:15px;">
+      在下面的输入框点一下，然后按快捷键或点按钮：
+    </p>
+    <textarea class="input-test" placeholder="测试输入框 - 点这里，然后试试打开面板"></textarea>
+    <button class="btn" onclick="manualTrigger()">⚡ 手动打开面板</button>
+    <button class="btn" onclick="testShortcut()">⌨️ 测试快捷键 (⌘⇧/)</button>
+    <button class="btn" onclick="forceShowOverlay()">💪 强制显示面板</button>
+  </div>
+
+  <div class="section">
+    <h2>第3步：高级调试</h2>
+    <button class="btn" onclick="inspectShadowDOM()">🔬 检查 Shadow DOM</button>
+    <button class="btn" onclick="checkCSS()">🎨 检查 CSS 样式</button>
+    <button class="btn" onclick="testInjection()">💉 测试模块注入</button>
+    <button class="btn" onclick="exportReport()">📋 导出诊断报告</button>
+  </div>
+</div>
+
+<script>
+let diagnosticData = {};
+
+const log = (msg, type = 'info') => {
+  const el = document.getElementById('log');
+  const time = new Date().toLocaleTimeString();
+  const className = `log-${type}`;
+  const line = document.createElement('div');
+  line.className = `log-line ${className}`;
+  line.innerHTML = `<span class="log-time">[${time}]</span>${msg}`;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+  console.log(`[${time}]`, msg);
+};
+
+const clearLog = () => {
+  document.getElementById('log').innerHTML = '';
+  document.getElementById('status-grid').innerHTML = '';
+  diagnosticData = {};
+};
+
+const updateStatus = (key, label, value, ok) => {
+  const grid = document.getElementById('status-grid');
+  const item = document.createElement('div');
+  item.className = `status-item ${ok ? 'ok' : 'error'}`;
+  item.innerHTML = `
+    <div class="status-label">${label}</div>
+    <div class="status-value">${value}</div>
+  `;
+  grid.appendChild(item);
+  diagnosticData[key] = { label, value, ok };
+};
+
+function runFullDiagnostic() {
+  clearLog();
+  log('=== 开始完整诊断 ===', 'info');
+  log('');
+  
+  // 第1步：检查全局对象
+  log('【1/6】检查全局模块...', 'info');
+  const modules = [
+    { name: 'TwAiRewrite', obj: window.TwAiRewrite },
+    { name: 'TwRenderLayer', obj: window.TwRenderLayer },
+    { name: 'TwTriggerLayer', obj: window.TwTriggerLayer },
+    { name: 'TwCommandLayer', obj: window.TwCommandLayer },
+    { name: 'createAIClient', obj: window.createAIClient },
+    { name: 'insertTextToTarget', obj: window.insertTextToTarget },
+  ];
+  
+  let allModulesOk = true;
+  modules.forEach(m => {
+    const ok = typeof m.obj !== 'undefined';
+    log(`  ${ok ? '✓' : '✗'} ${m.name}: ${typeof m.obj}`, ok ? 'ok' : 'error');
+    if (!ok) allModulesOk = false;
+  });
+  updateStatus('modules', '模块加载', allModulesOk ? '全部OK' : '有缺失', allModulesOk);
+  
+  if (!allModulesOk) {
+    log('', 'error');
+    log('⚠️ 致命错误：AI模块未加载！', 'error');
+    log('解决方法：', 'warn');
+    log('1. 点击工具栏的 TalkwebSour 图标', 'warn');
+    log('2. 点击「切换侧边栏」', 'warn');
+    log('3. 刷新本页面', 'warn');
+    return;
+  }
+  
+  log('');
+  
+  // 第2步：检查 Shadow DOM
+  log('【2/6】检查 Shadow DOM 结构...', 'info');
+  const host = document.querySelector('#talkweb-sour-host');
+  const root = host?.shadowRoot;
+  
+  log(`  ${host ? '✓' : '✗'} Host元素: ${host ? '存在' : '不存在'}`, host ? 'ok' : 'error');
+  log(`  ${root ? '✓' : '✗'} Shadow Root: ${root ? '存在' : '不存在'}`, root ? 'ok' : 'error');
+  updateStatus('shadowdom', 'Shadow DOM', root ? '正常' : '缺失', !!root);
+  
+  if (!root) {
+    log('', 'error');
+    log('⚠️ 错误：Shadow DOM 未创建！', 'error');
+    return;
+  }
+  
+  // 第3步：检查UI元素
+  log('');
+  log('【3/6】检查UI元素...', 'info');
+  const sb = root.querySelector('#sb');
+  const overlay = root.querySelector('#twar-overlay');
+  const input = root.querySelector('#twar-palette-input');
+  const list = root.querySelector('#twar-cmd-list');
+  
+  log(`  ${sb ? '✓' : '✗'} 侧边栏 #sb: ${sb ? '存在' : '不存在'}`, sb ? 'ok' : 'error');
+  log(`  ${overlay ? '✓' : '✗'} 面板 #twar-overlay: ${overlay ? '存在' : '不存在'}`, overlay ? 'ok' : 'error');
+  log(`  ${input ? '✓' : '✗'} 搜索框 #twar-palette-input: ${input ? '存在' : '不存在'}`, input ? 'ok' : 'error');
+  log(`  ${list ? '✓' : '✗'} 命令列表 #twar-cmd-list: ${list ? '存在' : '不存在'}`, list ? 'ok' : 'error');
+  
+  updateStatus('ui', 'UI元素', overlay ? '全部存在' : '缺失', !!overlay);
+  
+  if (!overlay) {
+    log('', 'error');
+    log('⚠️ 致命错误：面板元素未创建！', 'error');
+    log('这意味着 TwRenderLayer.init() 没有被调用或失败了', 'error');
+    return;
+  }
+  
+  // 第4步：检查面板状态
+  log('');
+  log('【4/6】检查面板当前状态...', 'info');
+  const hasOpen = overlay.classList.contains('open');
+  const sbHidden = sb?.classList.contains('hidden');
+  
+  log(`  面板 open 类: ${hasOpen ? '是' : '否'}`, hasOpen ? 'ok' : 'warn');
+  log(`  侧边栏隐藏: ${sbHidden ? '是' : '否'}`, sbHidden ? 'ok' : 'info');
+  
+  // 第5步：检查CSS样式
+  log('');
+  log('【5/6】检查面板CSS样式...', 'info');
+  const style = window.getComputedStyle(overlay);
+  log(`  display: ${style.display}`, style.display === 'flex' ? 'ok' : 'error');
+  log(`  opacity: ${style.opacity}`, style.opacity === '1' ? 'ok' : 'warn');
+  log(`  visibility: ${style.visibility}`, style.visibility === 'visible' ? 'ok' : 'warn');
+  log(`  zIndex: ${style.zIndex}`, style.zIndex === '2147483648' ? 'ok' : 'warn');
+  log(`  pointerEvents: ${style.pointerEvents}`, style.pointerEvents === 'auto' ? 'ok' : 'warn');
+  log(`  position: ${style.position}`, style.position === 'fixed' ? 'ok' : 'error');
+  
+  const cssOk = style.display === 'flex' && style.position === 'fixed';
+  updateStatus('css', 'CSS样式', cssOk ? '正常' : '异常', cssOk);
+  
+  // 第6步：检查数据
+  log('');
+  log('【6/6】检查存储数据...', 'info');
+  chrome.storage.local.get(['tw_aiPaletteMode', 'tw_aiApiKey', 'tw_snippets'], (data) => {
+    const mode = data.tw_aiPaletteMode || 'compact';
+    const hasKey = !!data.tw_aiApiKey;
+    const count = data.tw_snippets?.length || 0;
+    
+    log(`  面板模式: ${mode}`, 'info');
+    log(`  API Key: ${hasKey ? '已配置' : '未配置'}`, hasKey ? 'ok' : 'warn');
+    log(`  提示语数量: ${count}`, count > 0 ? 'ok' : 'warn');
+    
+    if (count === 0 && !hasKey) {
+      log('', 'warn');
+      log('⚠️ 提示：你既没有配置API Key，也没有添加提示语', 'warn');
+      log('建议先在侧边栏添加几条提示语测试', 'warn');
+    }
+    
+    updateStatus('data', '数据状态', `${count}条提示语`, count > 0 || hasKey);
+    
+    // 诊断总结
+    log('');
+    log('=== 诊断完成 ===', 'info');
+    
+    if (allModulesOk && root && overlay && cssOk) {
+      log('', 'ok');
+      log('🎉 所有检查通过！环境正常！', 'ok');
+      log('', 'ok');
+      log('如果面板还是不出现，请尝试：', 'info');
+      log('1. 点击「⚡ 手动打开面板」按钮', 'info');
+      log('2. 或点击「💪 强制显示面板」按钮', 'info');
+    } else {
+      log('', 'error');
+      log('❌ 检测到问题，请查看上方红色错误信息', 'error');
+    }
+  });
+}
+
+function manualTrigger() {
+  log('');
+  log('=== 手动触发面板 ===', 'info');
+  
+  if (!window.TwAiRewrite) {
+    log('✗ TwAiRewrite 未加载', 'error');
+    return;
+  }
+  
+  log('调用 TwAiRewrite.openSearchPalette()...', 'info');
+  
+  try {
+    window.TwAiRewrite.openSearchPalette();
+    log('✓ 调用成功', 'ok');
+    
+    setTimeout(() => {
+      const host = document.querySelector('#talkweb-sour-host');
+      const overlay = host?.shadowRoot?.querySelector('#twar-overlay');
+      const hasOpen = overlay?.classList.contains('open');
+      const style = overlay ? window.getComputedStyle(overlay) : null;
+      
+      log('', 'info');
+      log('面板状态（延迟200ms后）：', 'info');
+      log(`  hasOpenClass: ${hasOpen}`, hasOpen ? 'ok' : 'error');
+      if (style) {
+        log(`  display: ${style.display}`, 'info');
+        log(`  opacity: ${style.opacity}`, 'info');
+        log(`  visibility: ${style.visibility}`, 'info');
+      }
+      
+      if (hasOpen && style?.visibility === 'visible') {
+        log('', 'ok');
+        log('🎉 面板应该已经打开！', 'ok');
+      } else {
+        log('', 'error');
+        log('⚠️ 面板没有正确打开，尝试「💪 强制显示面板」', 'warn');
+      }
+    }, 200);
+  } catch (err) {
+    log(`✗ 调用失败: ${err.message}`, 'error');
+    console.error(err);
+  }
+}
+
+function forceShowOverlay() {
+  log('');
+  log('=== 强制显示面板 ===', 'warn');
+  
+  const host = document.querySelector('#talkweb-sour-host');
+  const root = host?.shadowRoot;
+  
+  if (!root) {
+    log('✗ Shadow Root 不存在', 'error');
+    return;
+  }
+  
+  const overlay = root.querySelector('#twar-overlay');
+  if (!overlay) {
+    log('✗ #twar-overlay 元素不存在', 'error');
+    return;
+  }
+  
+  // 强制设置样式
+  overlay.classList.add('open');
+  overlay.style.cssText = `
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2147483648 !important;
+    padding-top: 15vh !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    background: rgba(0,0,0,0.15) !important;
+  `;
+  
+  log('✓ 已强制设置面板样式', 'ok');
+  
+  // 聚焦输入框
+  const input = root.querySelector('#twar-palette-input');
+  if (input) {
+    setTimeout(() => {
+      input.focus();
+      log('✓ 输入框已聚焦', 'ok');
+    }, 100);
+  }
+  
+  // 隐藏侧边栏
+  const sb = root.querySelector('#sb');
+  if (sb && !sb.classList.contains('hidden')) {
+    sb.classList.add('hidden');
+    log('✓ 侧边栏已隐藏', 'ok');
+  }
+  
+  log('', 'ok');
+  log('🎉 如果你现在还看不到面板，说明：', 'warn');
+  log('1. 页面其他元素遮挡了面板（z-index太高）', 'warn');
+  log('2. 或者浏览器窗口被其他窗口遮挡', 'warn');
+  log('3. 尝试按 F12 打开开发者工具查看元素', 'warn');
+}
+
+function testShortcut() {
+  log('');
+  log('=== 测试快捷键 ===', 'info');
+  log('请按快捷键:', 'info');
+  log('  Mac: ⌘ + ⇧ + / (Command + Shift + /)', 'info');
+  log('  Win: Ctrl + ⇧ + / (Ctrl + Shift + /)', 'info');
+  log('', 'info');
+  log('监听中... (15秒后自动结束)', 'info');
+  
+  let detected = false;
+  const handler = (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.code === 'Slash') {
+      detected = true;
+      log('', 'ok');
+      log('✓ 检测到快捷键！', 'ok');
+      log(`  metaKey: ${e.metaKey}`, 'info');
+      log(`  ctrlKey: ${e.ctrlKey}`, 'info');
+      log(`  shiftKey: ${e.shiftKey}`, 'info');
+      log(`  code: ${e.code}`, 'info');
+      log(`  key: ${e.key}`, 'info');
+      document.removeEventListener('keydown', handler, true);
+    }
+  };
+  
+  document.addEventListener('keydown', handler, { capture: true });
+  
+  setTimeout(() => {
+    if (!detected) {
+      log('', 'warn');
+      log('⚠️ 15秒内未检测到快捷键', 'warn');
+      log('可能原因：', 'warn');
+      log('1. 焦点不在本页面', 'warn');
+      log('2. 快捷键被其他程序占用', 'warn');
+      log('3. 输入法拦截了按键', 'warn');
+    }
+    document.removeEventListener('keydown', handler, true);
+  }, 15000);
+}
+
+function inspectShadowDOM() {
+  log('');
+  log('=== Shadow DOM 详细检查 ===', 'info');
+  
+  const host = document.querySelector('#talkweb-sour-host');
+  if (!host) {
+    log('✗ Host元素不存在', 'error');
+    return;
+  }
+  
+  const root = host.shadowRoot;
+  if (!root) {
+    log('✗ Shadow Root 不存在', 'error');
+    return;
+  }
+  
+  log('✓ Shadow DOM 结构：', 'ok');
+  log(`  mode: ${root.mode}`, 'info');
+  log(`  子元素数量: ${root.childElementCount}`, 'info');
+  
+  const allIds = Array.from(root.querySelectorAll('[id]')).map(el => el.id);
+  log(`  包含的 ID 元素: ${allIds.length}个`, 'info');
+  
+  const aiElements = allIds.filter(id => id.startsWith('twar-'));
+  log(`  AI面板相关元素: ${aiElements.length}个`, aiElements.length > 0 ? 'ok' : 'error');
+  
+  if (aiElements.length > 0) {
+    log('  详细列表:', 'info');
+    aiElements.forEach(id => {
+      const el = root.getElementById(id);
+      log(`    - #${id} (${el?.tagName})`, 'info');
+    });
+  }
+}
+
+function checkCSS() {
+  log('');
+  log('=== CSS 样式详细检查 ===', 'info');
+  
+  const host = document.querySelector('#talkweb-sour-host');
+  const overlay = host?.shadowRoot?.querySelector('#twar-overlay');
+  
+  if (!overlay) {
+    log('✗ #twar-overlay 不存在', 'error');
+    return;
+  }
+  
+  const computed = window.getComputedStyle(overlay);
+  const inline = overlay.style;
+  
+  log('计算后的样式 (computed):', 'info');
+  [
+    'display', 'opacity', 'visibility', 'position', 'zIndex',
+    'pointerEvents', 'top', 'left', 'right', 'bottom',
+  ].forEach(prop => {
+    log(`  ${prop}: ${computed[prop]}`, 'info');
+  });
+  
+  log('', 'info');
+  log('内联样式 (inline):', 'info');
+  if (inline.cssText) {
+    log(`  ${inline.cssText}`, 'info');
+  } else {
+    log('  (无内联样式)', 'warn');
+  }
+  
+  log('', 'info');
+  log('类名列表:', 'info');
+  log(`  ${Array.from(overlay.classList).join(', ') || '(无类名)'}`, 'info');
+}
+
+function testInjection() {
+  log('');
+  log('=== 测试模块重新注入 ===', 'warn');
+  log('这将尝试重新初始化 AI 模块', 'warn');
+  
+  if (!window.TwAiRewrite || !window.TwRenderLayer) {
+    log('✗ 模块不存在，无法测试', 'error');
+    return;
+  }
+  
+  const host = document.querySelector('#talkweb-sour-host');
+  const root = host?.shadowRoot;
+  
+  if (!root) {
+    log('✗ Shadow Root 不存在', 'error');
+    return;
+  }
+  
+  log('注意：这个操作可能会破坏现有状态', 'warn');
+  log('确定要继续吗？(10秒内在控制台输入 yes)', 'warn');
+}
+
+function exportReport() {
+  log('');
+  log('=== 导出诊断报告 ===', 'info');
+  
+  const report = {
+    timestamp: new Date().toISOString(),
+    url: window.location.href,
+    userAgent: navigator.userAgent,
+    diagnosticData,
+    modules: {
+      TwAiRewrite: !!window.TwAiRewrite,
+      TwRenderLayer: !!window.TwRenderLayer,
+      TwTriggerLayer: !!window.TwTriggerLayer,
+    },
+    shadowDOM: !!document.querySelector('#talkweb-sour-host')?.shadowRoot,
+  };
+  
+  const json = JSON.stringify(report, null, 2);
+  navigator.clipboard.writeText(json).then(() => {
+    log('✓ 诊断报告已复制到剪贴板', 'ok');
+    log('', 'ok');
+    log('你可以将报告发给开发者', 'info');
+  });
+}
+
+// 页面加载后自动运行诊断
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    log('页面已加载，自动运行诊断...', 'info');
+    log('');
+    runFullDiagnostic();
+  }, 1000);
+});
+
+// 监听快捷键
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.code === 'Slash') {
+    log('', 'ok');
+    log('✓ 检测到快捷键 ⌘⇧/ 或 Ctrl+Shift+/', 'ok');
+  }
+}, { capture: true });
+</script>
+</body>
+</html>

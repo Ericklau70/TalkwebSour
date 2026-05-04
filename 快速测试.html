@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>⚡ 快速测试 - AI面板</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+  .step {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+  .step-num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  .step-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .step-desc {
+    color: #666;
+    line-height: 1.6;
+  }
+  .input-area {
+    width: 100%;
+    padding: 15px;
+    font-size: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 20px 0;
+    min-height: 120px;
+    transition: border-color 0.3s;
+    font-family: inherit;
+    resize: vertical;
+  }
+  .input-area:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+  }
+  .btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 5px;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102,126,234,0.4);
+  }
+  kbd {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-family: inherit;
+    font-size: 13px;
+    box-shadow: 0 2px 0 #ddd;
+    margin: 0 2px;
+  }
+  .success {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+  }
+  .error {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+  }
+  .info {
+    background: #d1ecf1;
+    border-color: #17a2b8;
+    color: #0c5460;
+  }
+  #log {
+    background: #1a1a1a;
+    color: #0f0;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+  }
+  .log-entry {
+    margin: 5px 0;
+    line-height: 1.4;
+  }
+  .log-time {
+    color: #888;
+    margin-right: 8px;
+  }
+  .log-success { color: #0f0; }
+  .log-error { color: #f44; }
+  .log-warn { color: #fa0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>⚡ AI 面板快速测试</h1>
+  <p class="subtitle">测试你的 TalkwebSour AI 面板是否正常工作</p>
+
+  <div class="step">
+    <div class="step-title">
+      <span class="step-num">1</span>
+      重新加载扩展
+    </div>
+    <div class="step-desc">
+      打开 <code>chrome://extensions/</code>，找到 TalkwebSour，点击「🔄 重新加载」
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-title">
+      <span class="step-num">2</span>
+      加载侧边栏到本页面
+    </div>
+    <div class="step-desc">
+      点击 Chrome 工具栏的 TalkwebSour 图标 → 点「切换侧边栏」→ 看到侧边栏出现
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-title">
+      <span class="step-num">3</span>
+      测试 AI 面板
+    </div>
+    <div class="step-desc">
+      在下面的输入框点一下（让插件记住这个位置），然后：
+      <ul style="margin:10px 0 0 20px;line-height:1.8">
+        <li>点击侧边栏搜索框旁的 <strong>⚡ 按钮</strong></li>
+        <li>或按快捷键：<kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>L</kbd> (Mac)</li>
+        <li>或按快捷键：<kbd>Ctrl</kbd> + <kbd>⇧</kbd> + <kbd>L</kbd> (Win)</li>
+      </ul>
+    </div>
+  </div>
+
+  <textarea class="input-area" placeholder="测试输入框 - 点这里，然后按快捷键或点⚡按钮"></textarea>
+
+  <div style="text-align: center; margin: 20px 0;">
+    <button class="btn" onclick="checkModules()">🔍 检查模块加载</button>
+    <button class="btn" onclick="testPalette()">⚡ 手动打开面板</button>
+    <button class="btn" onclick="testShortcut()">⌨️ 测试快捷键</button>
+    <button class="btn" onclick="clearLog()" style="background: #6c757d;">清空日志</button>
+  </div>
+
+  <div id="log"></div>
+</div>
+
+<script>
+const log = (msg, type = 'info') => {
+  const el = document.getElementById('log');
+  const time = new Date().toLocaleTimeString();
+  const className = type === 'error' ? 'log-error' : type === 'success' ? 'log-success' : type === 'warn' ? 'log-warn' : '';
+  el.innerHTML += `<div class="log-entry ${className}"><span class="log-time">[${time}]</span>${msg}</div>`;
+  el.scrollTop = el.scrollHeight;
+  console.log(`[${time}]`, msg);
+};
+
+const clearLog = () => {
+  document.getElementById('log').innerHTML = '';
+};
+
+function checkModules() {
+  clearLog();
+  log('=== 检查模块加载状态 ===');
+  
+  const checks = [
+    { name: 'TwAiRewrite', obj: window.TwAiRewrite },
+    { name: 'TwRenderLayer', obj: window.TwRenderLayer },
+    { name: 'TwTriggerLayer', obj: window.TwTriggerLayer },
+    { name: 'TwCommandLayer', obj: window.TwCommandLayer },
+    { name: 'createAIClient', obj: window.createAIClient },
+    { name: 'insertTextToTarget', obj: window.insertTextToTarget },
+  ];
+  
+  let allOk = true;
+  checks.forEach(c => {
+    const ok = typeof c.obj !== 'undefined';
+    log(`${ok ? '✓' : '✗'} ${c.name}: ${typeof c.obj}`, ok ? 'success' : 'error');
+    if (!ok) allOk = false;
+  });
+  
+  log('');
+  
+  // 检查 Shadow DOM
+  const host = document.querySelector('#talkweb-sour-host');
+  const root = host?.shadowRoot;
+  log(`${host ? '✓' : '✗'} Host元素 (#talkweb-sour-host): ${host ? '存在' : '不存在'}`, host ? 'success' : 'error');
+  log(`${root ? '✓' : '✗'} Shadow Root: ${root ? '存在' : '不存在'}`, root ? 'success' : 'error');
+  
+  if (root) {
+    const sb = root.querySelector('#sb');
+    const overlay = root.querySelector('#twar-overlay');
+    log(`${sb ? '✓' : '✗'} 侧边栏 (#sb): ${sb ? '存在' : '不存在'}`, sb ? 'success' : 'error');
+    log(`${overlay ? '✓' : '✗'} 面板 (#twar-overlay): ${overlay ? '存在' : '不存在'}`, overlay ? 'success' : 'error');
+  }
+  
+  log('');
+  if (allOk && host && root) {
+    log('🎉 所有检查通过！可以测试 AI 面板了', 'success');
+  } else {
+    log('⚠️ 检测到问题，请先加载扩展到本页面', 'error');
+    log('→ 点击工具栏的 TalkwebSour 图标 → 切换侧边栏', 'warn');
+  }
+}
+
+function testPalette() {
+  clearLog();
+  log('=== 手动打开 AI 面板 ===');
+  
+  if (!window.TwAiRewrite) {
+    log('✗ TwAiRewrite 未加载', 'error');
+    log('→ 请先点击「检查模块加载」按钮排查', 'warn');
+    return;
+  }
+  
+  log('调用 TwAiRewrite.openSearchPalette()...');
+  
+  try {
+    window.TwAiRewrite.openSearchPalette();
+    log('✓ 调用成功', 'success');
+    
+    // 延迟检查
+    setTimeout(() => {
+      const host = document.querySelector('#talkweb-sour-host');
+      const overlay = host?.shadowRoot?.querySelector('#twar-overlay');
+      const hasOpen = overlay?.classList.contains('open');
+      
+      log('');
+      log('面板状态检查:');
+      log(`- overlay 存在: ${!!overlay}`);
+      log(`- hasOpenClass: ${hasOpen}`);
+      
+      if (hasOpen) {
+        log('');
+        log('🎉 面板成功打开！', 'success');
+        log('→ 侧边栏应该已消失，屏幕中央出现搜索条', 'success');
+      } else {
+        log('');
+        log('⚠️ 面板未打开，查看控制台是否有报错', 'error');
+      }
+    }, 300);
+  } catch (err) {
+    log(`✗ 调用失败: ${err.message}`, 'error');
+    console.error(err);
+  }
+}
+
+function testShortcut() {
+  clearLog();
+  log('=== 快捷键测试 ===');
+  log('请按快捷键:');
+  log('- Mac: ⌘ + ⇧ + L');
+  log('- Win: Ctrl + ⇧ + L');
+  log('');
+  log('监听中... (10秒后自动结束)');
+  
+  let detected = false;
+  const handler = (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.code === 'KeyL') {
+      detected = true;
+      log('');
+      log('✓ 检测到快捷键！', 'success');
+      log(`- metaKey: ${e.metaKey} (Mac的⌘)`);
+      log(`- ctrlKey: ${e.ctrlKey} (Win的Ctrl)`);
+      log(`- shiftKey: ${e.shiftKey}`);
+      log(`- code: ${e.code}`);
+      document.removeEventListener('keydown', handler, true);
+    }
+  };
+  
+  document.addEventListener('keydown', handler, { capture: true });
+  
+  setTimeout(() => {
+    if (!detected) {
+      log('');
+      log('⚠️ 10秒内未检测到快捷键', 'warn');
+      log('→ 请确保焦点在本页面（点一下页面任意地方）', 'warn');
+    }
+    document.removeEventListener('keydown', handler, true);
+  }, 10000);
+}
+
+// 页面加载完成后自动检查
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    log('页面已加载，自动检查模块...');
+    log('');
+    checkModules();
+  }, 1000);
+});
+
+// 监听快捷键
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.code === 'KeyL') {
+    console.log('检测到快捷键 ⌘⇧L / Ctrl+Shift+L');
+  }
+}, { capture: true });
+</script>
+</body>
+</html>

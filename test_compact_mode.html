@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>测试缩小模式 - TalkwebSour</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h1 {
+    color: #fff;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  .card h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #667eea;
+  }
+  .steps {
+    list-style: none;
+    counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step;
+    padding: 12px 0;
+    padding-left: 40px;
+    position: relative;
+    color: #555;
+    line-height: 1.6;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .test-input {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin: 15px 0;
+    transition: border-color 0.2s;
+  }
+  .test-input:focus {
+    border-color: #667eea;
+    outline: none;
+  }
+  .btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 10px 5px 10px 0;
+    box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102,126,234,0.4);
+  }
+  .btn:active { transform: translateY(0); }
+  .info-box {
+    background: #f0f7ff;
+    border-left: 4px solid #667eea;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
+  .info-box strong { color: #667eea; }
+  .warning-box {
+    background: #fff5f5;
+    border-left: 4px solid #ff4466;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
+  .warning-box strong { color: #ff4466; }
+  .success-box {
+    background: #f0fff4;
+    border-left: 4px solid #00d4ff;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
+  .success-box strong { color: #00d4ff; }
+  code {
+    background: rgba(102,126,234,0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 13px;
+    color: #667eea;
+  }
+  kbd {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-family: inherit;
+    font-size: 12px;
+    box-shadow: 0 2px 0 #ddd;
+  }
+  #log {
+    background: #1a1a1a;
+    color: #0f0;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'SF Mono', monospace;
+    font-size: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🧪 TalkwebSour 缩小模式测试页</h1>
+
+  <div class="card">
+    <h2>⚠️ 必须先做：重新加载扩展</h2>
+    <div class="warning-box">
+      <strong>非常重要！</strong> 代码已更新，必须重新加载才能生效：
+      <ol style="margin:10px 0 0 20px;line-height:1.8">
+        <li>打开 <code>chrome://extensions/</code></li>
+        <li>找到 <strong>TalkwebSour</strong></li>
+        <li>点击 <strong>🔄 重新加载</strong> 按钮</li>
+        <li>刷新这个页面（<kbd>⌘</kbd>+<kbd>R</kbd>）</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📝 第1步：加载扩展到本页面</h2>
+    <ol class="steps">
+      <li>点击 Chrome 工具栏的 <strong>TalkwebSour</strong> 图标</li>
+      <li>在弹窗中点击「<strong>切换侧边栏</strong>」</li>
+      <li>侧边栏出现（侧边栏里至少要有 2-3 条提示语）</li>
+    </ol>
+    <button class="btn" onclick="checkLoaded()">🔍 检查模块是否加载</button>
+  </div>
+
+  <div class="card">
+    <h2>⚡ 第2步：测试缩小模式</h2>
+    <div class="info-box">
+      <strong>关键点：</strong> 点「⚡」后侧边栏应该<strong>消失</strong>，只留下小搜索条
+    </div>
+    
+    <ol class="steps">
+      <li>在下面的输入框点一下光标（让插件记住这个位置）</li>
+      <li>点侧边栏搜索框右侧的 <strong>⚡ 按钮</strong>（或按 <kbd>⌘</kbd>+<kbd>K</kbd>）</li>
+      <li>侧边栏应该<strong>消失</strong>，屏幕中央出现小搜索条</li>
+      <li>在搜索框输入 <code>/</code> 或关键词</li>
+      <li>用 <kbd>↑</kbd><kbd>↓</kbd> 选择一条</li>
+      <li>按 <kbd>Enter</kbd></li>
+      <li>搜索条<strong>不关闭</strong>，展开内容编辑区</li>
+      <li>可以在编辑框修改内容</li>
+      <li>点 <strong>Copy</strong> 按钮</li>
+      <li>检查下方输入框，按 <kbd>⌘</kbd>+<kbd>V</kbd> 粘贴</li>
+    </ol>
+
+    <textarea class="test-input" placeholder="测试输入框 - 点这里，然后试试 AI 面板的「插入」功能"></textarea>
+
+    <button class="btn" onclick="manualTrigger()">🧪 手动触发面板（跳过快捷键）</button>
+    <button class="btn" onclick="checkMode()">🔍 查看当前模式</button>
+  </div>
+
+  <div class="card">
+    <h2>🎯 第3步：测试完整模式</h2>
+    <ol class="steps">
+      <li>打开面板（点「⚡」或按 <kbd>⌘</kbd>+<kbd>K</kbd>）</li>
+      <li>点搜索框右侧的 <strong>⇄ 完整</strong> 按钮</li>
+      <li>选择一条提示语</li>
+      <li>应该<strong>直接插入</strong>到输入框并<strong>关闭面板</strong>（不展开编辑区）</li>
+      <li>侧边栏应该<strong>重新出现</strong></li>
+    </ol>
+
+    <button class="btn" onclick="toggleMode()">🔄 切换模式（手动）</button>
+  </div>
+
+  <div class="card">
+    <h2>📊 调试日志</h2>
+    <button class="btn" onclick="clearLog()">清空日志</button>
+    <div id="log">点击上方按钮查看调试信息...</div>
+  </div>
+</div>
+
+<script>
+const log = (...args) => {
+  const el = document.getElementById('log');
+  const time = new Date().toLocaleTimeString();
+  el.textContent += `[${time}] ${args.join(' ')}\n`;
+  el.scrollTop = el.scrollHeight;
+  console.log(...args);
+};
+
+const clearLog = () => {
+  document.getElementById('log').textContent = '';
+};
+
+function checkLoaded() {
+  clearLog();
+  log('=== 检查模块加载状态 ===');
+  log('window.TwAiRewrite:', typeof window.TwAiRewrite);
+  log('window.TwRenderLayer:', typeof window.TwRenderLayer);
+  log('window.TwTriggerLayer:', typeof window.TwTriggerLayer);
+  log('window.createAIClient:', typeof window.createAIClient);
+  log('window.insertTextToTarget:', typeof window.insertTextToTarget);
+  log('window.toggleAiPaletteMode:', typeof window.toggleAiPaletteMode);
+  
+  if (typeof window.TwAiRewrite === 'object') {
+    log('\n✓ TwAiRewrite 已加载');
+    log('  - openSearchPalette:', typeof window.TwAiRewrite.openSearchPalette);
+  } else {
+    log('\n❌ TwAiRewrite 未加载！');
+    log('解决方法：');
+    log('1. 点击工具栏的 TalkwebSour 图标');
+    log('2. 点击「切换侧边栏」');
+    log('3. 刷新本页面');
+  }
+  
+  // 检查侧边栏
+  const host = document.querySelector('#talkweb-sour-host');
+  const sb = host?.shadowRoot?.querySelector('#sb');
+  log('\n侧边栏状态:', sb ? (sb.classList.contains('hidden') ? '已隐藏' : '显示中') : '未找到');
+}
+
+function checkMode() {
+  clearLog();
+  log('=== 检查当前模式 ===');
+  
+  chrome.storage.local.get(['tw_aiPaletteMode', 'tw_aiApiKey', 'tw_snippets'], (r) => {
+    log('面板模式:', r.tw_aiPaletteMode || '(未设置，默认 compact)');
+    log('API Key:', r.tw_aiApiKey ? '已配置' : '未配置');
+    log('提示语数量:', r.tw_snippets?.length || 0);
+    
+    if ((r.tw_snippets?.length || 0) === 0) {
+      log('\n⚠️ 警告：你还没有添加任何提示语！');
+      log('请在侧边栏点击「➕ 新增语句」添加几条测试数据。');
+    }
+  });
+}
+
+function manualTrigger() {
+  clearLog();
+  log('=== 手动触发面板 ===');
+  
+  if (!window.TwAiRewrite) {
+    log('❌ TwAiRewrite 未定义，请先加载扩展');
+    return;
+  }
+  
+  try {
+    log('调用 TwAiRewrite.openSearchPalette()...');
+    window.TwAiRewrite.openSearchPalette();
+    log('✓ 调用成功');
+    log('\n期望看到：');
+    log('1. 侧边栏消失');
+    log('2. 屏幕中央出现小搜索条');
+    log('3. 背景几乎透明');
+  } catch (err) {
+    log('❌ 调用失败:', err.message);
+    console.error(err);
+  }
+}
+
+function toggleMode() {
+  clearLog();
+  log('=== 切换模式 ===');
+  
+  if (!window.toggleAiPaletteMode) {
+    log('❌ toggleAiPaletteMode 未定义');
+    return;
+  }
+  
+  const newMode = window.toggleAiPaletteMode();
+  log('切换后模式:', newMode);
+  log(newMode === 'compact' ? '✓ 已切换到缩小模式' : '✓ 已切换到完整模式');
+}
+
+// 监听快捷键
+document.addEventListener('keydown', (e) => {
+  if (e.metaKey && !e.shiftKey && e.code === 'KeyK') {
+    log('检测到 ⌘K 快捷键');
+  }
+  if (e.altKey && e.shiftKey && e.code === 'KeyA') {
+    log('检测到 Alt+Shift+A 快捷键');
+  }
+}, { capture: true });
+
+// 页面加载后自动检查
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const host = document.querySelector('#talkweb-sour-host');
+    if (host) {
+      log('✓ 扩展已加载到本页面');
+    } else {
+      log('⚠️ 扩展未加载，请点击工具栏图标');
+    }
+  }, 1000);
+});
+</script>
+</body>
+</html>

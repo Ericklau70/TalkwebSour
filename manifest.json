@@ -1,0 +1,84 @@
+{
+  "manifest_version": 3,
+  "name": "TalkwebSour",
+  "version": "3.5.0",
+  "author": "ErickLiu",
+  "description": "后台待命，快捷键或手动在当前网页按需唤出主界面/快速模式 · Prompt Snippet Manager",
+  "permissions": [
+    "windows",
+    "storage",
+    "activeTab",
+    "scripting",
+    "clipboardWrite",
+    "tabs",
+    "downloads",
+    "sidePanel",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "TalkwebSour - 打开侧边栏"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_ui": {
+    "page": "popup.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/agency/*",
+        "src/agency/bodies/*",
+        "src/agency/ui-l10n/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "tw_toggle_sidebar": {
+      "suggested_key": {
+        "default": "Alt+Shift+W",
+        "mac": "Alt+Shift+W"
+      },
+      "description": "切换主界面（按需注入当前标签页）"
+    },
+    "tw_open_palette": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "打开快速模式（按需注入当前标签页）"
+    },
+    "tw_ai_rewrite": {
+      "suggested_key": {
+        "default": "Alt+Shift+R",
+        "mac": "Alt+Shift+R"
+      },
+      "description": "AI：润色重写（需选中文本；按需注入当前页）"
+    },
+    "tw_ai_translate": {
+      "suggested_key": {
+        "default": "Alt+Shift+T",
+        "mac": "Alt+Shift+T"
+      },
+      "description": "AI：翻译（需已选中文本）"
+    }
+  }
+}

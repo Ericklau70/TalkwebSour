@@ -128,51 +128,127 @@ npm run build:parse-ai
 
 ---
 
-## 故障排查（AI 面板无反应等）
+# 🆚 示例（核心卖点展示）
+## 🆚 示例（核心卖点展示）
 
-### 1. 重新加载扩展（首选）
-
-1. `chrome://extensions/` → 找到 **TalkwebSour** → **重新加载**  
-2. **刷新**测试页面  
-3. 再点工具栏图标与「⚡」
-
-### 2. 检查模块是否加载
-
-在页面控制台（F12 → Console）执行：
-
-```js
-window.TwAiRewrite
-```
-
-应返回包含 `openSearchPalette` 等方法的对象；若为 `undefined`，回到步骤 1。
-
-### 3. 手动打开面板
-
-```js
-TwAiRewrite.openSearchPalette()
-```
-
-若仍无浮层，查看控制台红色报错信息。
-
-### 4. 检查 Shadow DOM
-
-```js
-const host = document.querySelector('#talkweb-sour-host');
-console.log(host?.shadowRoot?.querySelector('#twar-overlay'));
-```
-
-### 5. 快捷键被网站占用（如 GitHub 占用 ⌘K）
-
-改用鼠标点击「⚡」按钮。
+以下示例展示：  
+👉 直接使用 AI vs 使用 TalkWeb 的差异
 
 ---
 
-## 开发提示
+## 示例一：SOP 生成（普通 AI vs TalkWeb）
 
-- 修改 `src/content.js` 中的分类、默认语句等请参考源码内常量。  
-- 样式主题变量在 `src/sidebar.css` 的 `:root`。  
-- 插件注入 `<all_urls>`；若需限制站点，请改 `manifest.json` 的 `host_permissions`。  
-- 数据存于浏览器本地；卸载扩展会丢失数据，请定期导出备份。
+### 🧾 用户输入（原始）
+
+现在需要梳理一下一般自购采购流程……
+
+---
+
+### ❌ 直接使用 AI（如 Gemini）
+
+- 输出为简单步骤描述  
+- 没有明确角色划分  
+- 没有结构化格式  
+- 无法直接用于企业执行  
+
+📸 示例截图：  
+（在此插入 Gemini 输出截图）
+
+---
+
+### ✅ 使用 TalkWeb（标准 SOP Prompt）
+
+- 自动识别业务职能（采购 / 财务等）  
+- 自动补全角色（需求方 / 采购 / 财务 / 审批人）  
+- 输出完整 SOP 文档结构  
+- 包含流程步骤 + 风险控制 + 审计记录  
+- 可直接用于企业内部执行  
+
+📸 示例截图：  
+（在此插入 TalkWeb SOP 输出截图）
+
+<img width="861" height="411" alt="Screenshot 2026-05-04 at 3 33 00 PM" src="https://github.com/user-attachments/assets/d6cd760d-b489-4c81-9e26-5fb3fb3b4da8" />
+
+
+## 示例二：Mermaid 流程图生成
+
+### 🧾 用户输入
+
+帮我画一个采购流程图
+
+---
+
+### ❌ 直接使用 AI（如 ChatGPT）
+
+- 可能生成不完整或逻辑混乱的图  
+- 缺少业务角色  
+- 不符合实际流程  
+
+📸 示例截图：  
+（在此插入普通 Mermaid 输出）
+
+---
+
+### ✅ 使用 TalkWeb（结构化 + Agent）
+
+- 自动识别流程阶段  
+- 自动补全业务逻辑  
+- 明确角色流转  
+- 输出标准 Mermaid 图  
+
+📸 示例截图：  
+（在此插入 TalkWeb Mermaid 输出）
+
+---
+
+## 示例三：AI 人设（角色化能力）
+
+### 🧾 用户需求
+
+用一个“搞笑的 Iron Man 风格 IT 工程师”帮我解决电脑问题
+
+---
+
+### ❌ 普通 AI
+
+- 风格不稳定  
+- 容易跑偏  
+- 没有持续角色设定  
+
+📸 示例截图：  
+（在此插入普通输出）
+
+---
+
+### ✅ TalkWeb 人设系统
+
+- 可定义固定角色（Iron Man 风格 IT）  
+- 保持语气一致（幽默 / 嘲讽 / 技术感）  
+- 同时提供专业解决方案  
+- 兼顾“可用性 + 娱乐性”  
+
+📸 示例截图：  
+（在此插入 TalkWeb 人设输出）
+
+---
+
+## 🔥 核心差异总结
+
+| 能力 | 普通 AI | TalkWeb |
+|------|--------|--------|
+| SOP 结构化 | ❌ | ✅ |
+| 自动角色识别 | ❌ | ✅ |
+| 可执行性 | ❌ | ✅ |
+| 流程图质量 | 不稳定 | 高质量 |
+| 人设稳定性 | ❌ | ✅ |
+| Prompt 管理 | ❌ | ✅ |
+
+---
+
+👉 本质区别：
+
+普通 AI = 回答问题  
+TalkWeb = 构建系统
 
 ---
 

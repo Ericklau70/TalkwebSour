@@ -1,5 +1,6 @@
 # TalkwebSour Chrome Extension V3.5
 > ⚡ Semi-transparent tech-style sidebar + global AI rewrite layer
+<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/56385ffc-240b-44cb-acc8-29ca664e8fc0" />
 
 ---
 

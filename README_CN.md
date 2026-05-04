@@ -1,7 +1,7 @@
 # TalkwebSour Chrome Extension V3.5
 
-> 半透明科技感侧边栏 + 全局 AI 改写层（Command Palette）  
-> Semi-transparent sidebar + global AI rewrite layer
+Humans and AI can actually be closer.
+人和AI其实可以更近。
 <img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/1c5c90ba-e45b-4768-836f-ee9f106b770b" />
 
 ## 🌍 语言
@@ -52,26 +52,6 @@
 
 ---
 
-## 项目结构（节选）
-
-```
-TalkWebSour_V3.5/
-├── manifest.json              # 扩展配置（version 3.5.0）
-├── SourMac.command            # Mac 一键环境（项目根目录）
-├── SourWins.bat               # Windows 一键环境（项目根目录）
-├── popup.html / popup.js
-├── src/
-│   ├── content.js             # 侧边栏主逻辑
-│   ├── background.js        # 后台服务
-│   ├── ai_rewrite/          # AI 改写层
-│   ├── components/          # 含 Mermaid 编辑器等
-│   └── utils/               # bundle 构建产物等
-├── icons/
-└── scripts/                   # 构建与工具脚本（verify、build-agency 等）
-```
-
----
-
 ## 一键环境安装（Mac / Windows）
 
 无需事先安装 Node / Python：双击根目录脚本，将自动检测并安装缺失的 **Homebrew（仅 Mac）/ Node / npm / Python**，并在项目根目录执行 **`npm install`**。
@@ -81,29 +61,6 @@ TalkWebSour_V3.5/
 | **Mac** | `./SourMac.command` |
 | **Windows** | `SourWins.bat` |
 
-### 权限与常见问题
-
-**Mac**
-
-- 首次可能被拦截：**右键 → 打开**；或 **系统设置 → 隐私与安全性 → 仍要打开**。
-- 若无法执行：`chmod +x SourMac.command`
-- 可选配置：复制 `scripts/install.prefs.example` 为项目根目录 **`install.prefs`**（若不存在则仍会尝试读取 `scripts/install.prefs`）。设置 `BUILD_AGENCY_AFTER_INSTALL=1` 可在安装后重建 Agency 索引。
-
-**Windows**
-
-- `winget` 失败时请以**管理员身份**运行 CMD，或先安装 [应用安装程序](https://aka.ms/getwinget)。
-- 安装 Node 后若仍找不到 `node`：关闭窗口后重新双击脚本，或重启电脑。
-
-**可选构建命令**（生成扩展用前端 bundle）：
-
-```bash
-npm run build:quick-chat-history
-npm run build:mermaid-editor
-npm run build:mermaid
-npm run build:parse-ai
-```
-
----
 
 ## 在 Chrome 中加载扩展（开发者模式）
 
@@ -140,8 +97,6 @@ npm run build:parse-ai
 
 以下示例展示：  
 👉 直接使用 AI vs 使用 TalkWeb 的差异
-
----
 
 ## 示例一：SOP 生成（普通 AI vs TalkWeb）
 

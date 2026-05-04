@@ -1,6 +1,6 @@
 # TalkwebSour Chrome Extension V3.5
 > ⚡ Humans and AI can actually be closer.
-人和AI其实可以更近。
+
 <img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/56385ffc-240b-44cb-acc8-29ca664e8fc0" />
 
 ---

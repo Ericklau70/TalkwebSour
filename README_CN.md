@@ -7,7 +7,6 @@
 
 - 🇬🇧 [English](./README_EN.md)
 - 🇨🇳 中文（当前）
-- 🇰🇷 [한국어](./README_KR.md)
 
 ---
 

@@ -1,5 +1,6 @@
 # TalkwebSour Chrome Extension V3.5
-> ⚡ Semi-transparent tech-style sidebar + global AI rewrite layer
+> ⚡ Humans and AI can actually be closer.
+人和AI其实可以更近。
 <img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/56385ffc-240b-44cb-acc8-29ca664e8fc0" />
 
 ---
@@ -34,52 +35,6 @@
 
 ---
 
-### 🧱 Three-Layer Architecture
-
-- 🎯 Trigger — shortcuts, selection tracking, focus memory  
-- 💬 Command — slash commands, prompts, multi-provider  
-- 🖼 Render — palette / preview / diff  
-
----
-
-### 🔌 Text Injection Compatibility
-
-- `<textarea>` / `<input>` (including React/Vue controlled components)
-- `contenteditable`
-- ChatGPT / Claude / ProseMirror-based editors
-
----
-
-### 🤖 Supported AI Services (configurable)
-
-- OpenAI (GPT-4o / 4o-mini, etc.)
-- Google Gemini
-- Alibaba Qwen (OpenAI-compatible endpoint)
-- DeepSeek
-- Ollama (local)
-
----
-
-## 📁 Project Structure (Excerpt)
-
-
-```
-TalkWebSour_V3.5/
-├── manifest.json              # Extension config (version 3.5.0)
-├── SourMac.command            # Mac one-click setup (root)
-├── SourWins.bat               # Windows one-click setup (root)
-├── popup.html / popup.js
-├── src/
-│   ├── content.js             # Sidebar core logic
-│   ├── background.js        # Background service
-│   ├── ai_rewrite/          # AI rewrite layer
-│   ├── components/          # Mermaid editor, etc.
-│   └── utils/               # Bundled utilities
-├── icons/
-└── scripts/                   # Build & tooling scripts
-```
-
----
 
 ## 🧩 One-Click Setup (Mac / Windows)
 

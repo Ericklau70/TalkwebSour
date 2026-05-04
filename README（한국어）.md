@@ -8,7 +8,7 @@
 ## 🌍 언어
 
 - 🇬🇧 [English](./README.md)
-- 🇨🇳 [中文](./README_CN.md)
+- 🇨🇳 [中文](./README（中文）.md)
 - 🇰🇷 한국어 (현재)
 
 ---

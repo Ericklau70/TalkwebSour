@@ -2,7 +2,8 @@
 
 > 半透明科技感侧边栏 + 全局 AI 改写层（Command Palette）  
 > Semi-transparent sidebar + global AI rewrite layer
->
+<img width="1000" height="800" alt="image" src="https://github.com/user-attachments/assets/1c5c90ba-e45b-4768-836f-ee9f106b770b" />
+
 ## 🌍 语言
 
 - 🇬🇧 [English](./README_EN.md)

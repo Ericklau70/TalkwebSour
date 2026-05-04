@@ -7,7 +7,7 @@
 ## 🌍 Language
 
 - 🇬🇧 English (Current)
-- 🇨🇳 [中文](./README（中文）)
+- 🇨🇳 [中文](./README（中文）.md)
 - 🇰🇷 [한국어](./README_KR.md)
 
 ---

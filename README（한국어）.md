@@ -1,4 +1,4 @@
-# TalkWeb (Sour AI System) v3.7
+# TalkWeb (Sour AI System) v3.5
 
 > 흐릿한 입력 → 기업급 SOP / 다이어그램 / 구조화된 결과를 한 번에 생성  
 > AI가 당신을 더 잘 이해하도록 돕는 인터페이스

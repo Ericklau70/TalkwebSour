@@ -1,4 +1,4 @@
-# TalkWeb (Sour AI System) v3.7
+# TalkWeb (Sour AI System) v3.5
 
 > 模糊输入 → 一键生成企业级 SOP / 流程图 / 结构化输出  
 > 一个让 AI 更好理解你的入口系统
